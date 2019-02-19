@@ -1,4 +1,4 @@
-function cycle(x, k) {
+function cycle(x: number[], k: number[]) {
     var a = x[0], b = x[1], c = x[2], d = x[3];
 
     a = ff(a, b, c, d, k[0], 7, -680876936);
@@ -73,34 +73,64 @@ function cycle(x, k) {
     x[1] = add32(b, x[1]);
     x[2] = add32(c, x[2]);
     x[3] = add32(d, x[3]);
-
 }
 
-function cmn(q, a, b, x, s, t) {
+function cmn(q: number, a: number, b: number, x: number, s: number, t: number): number {
     a = add32(add32(a, q), add32(x, t));
     return add32((a << s) | (a >>> (32 - s)), b);
 }
 
-function ff(a, b, c, d, x, s, t) {
+function ff(
+    a: number,
+    b: number,
+    c: number,
+    d: number,
+    x: number,
+    s: number,
+    t: number
+): number {
     return cmn((b & c) | ((~b) & d), a, b, x, s, t);
 }
 
-function gg(a, b, c, d, x, s, t) {
+function gg(
+    a: number,
+    b: number,
+    c: number,
+    d: number,
+    x: number,
+    s: number,
+    t: number
+): number {
     return cmn((b & d) | (c & (~d)), a, b, x, s, t);
 }
 
-function hh(a, b, c, d, x, s, t) {
+function hh(
+    a: number,
+    b: number,
+    c: number,
+    d: number,
+    x: number,
+    s: number,
+    t: number
+): number {
     return cmn(b ^ c ^ d, a, b, x, s, t);
 }
 
-function ii(a, b, c, d, x, s, t) {
+function ii(
+    a: number,
+    b: number,
+    c: number,
+    d: number,
+    x: number,
+    s: number,
+    t: number
+): number {
     return cmn(c ^ (b | (~d)), a, b, x, s, t);
 }
 
-function md51(s) {
-    txt = '';
-    var n = s.length,
-        state = [1732584193, -271733879, -1732584194, 271733878], i;
+function md51(s: string): number[] {
+    const n = s.length, state = [1732584193, -271733879, -1732584194, 271733878];
+    let i: number;
     for (i = 64; i <= s.length; i += 64) {
         cycle(state, blk(s.substring(i - 64, i)));
     }
@@ -118,9 +148,9 @@ function md51(s) {
     return state;
 }
 
-function blk(s) {
-    var md5blks = [], i;
-    for (i = 0; i < 64; i += 4) {
+function blk(s: string): number[] {
+    const md5blks: number[] = [];
+    for (let i = 0; i < 64; i += 4) {
         md5blks[i >> 2] = s.charCodeAt(i)
             + (s.charCodeAt(i + 1) << 8)
             + (s.charCodeAt(i + 2) << 16)
@@ -129,26 +159,24 @@ function blk(s) {
     return md5blks;
 }
 
-var hex_chr = '0123456789abcdef'.split('');
+const hex_chr = '0123456789abcdef'.split('');
 
-function rhex(n) {
+function rhex(n: number): string {
     var s = '', j = 0;
-    for (; j < 4; j++)
-        s += hex_chr[(n >> (j * 8 + 4)) & 0x0F]
-            + hex_chr[(n >> (j * 8)) & 0x0F];
+    for (; j < 4; j++) {
+        s += hex_chr[(n >> (j * 8 + 4)) & 0x0F] + hex_chr[(n >> (j * 8)) & 0x0F];
+    }
     return s;
 }
 
-function add32(a, b) {
+function add32(a: number, b: number): number {
     return (a + b) & 0xFFFFFFFF;
 }
 
-function hex(x) {
-    for (var i = 0; i < x.length; i++)
-        x[i] = rhex(x[i]);
-    return x.join('');
+function hex(x: number[]): string {
+    return x.map(rhex).join('');
 }
 
-export function md5(s) {
+export function md5(s: string): string {
     return hex(md51(s));
 }
