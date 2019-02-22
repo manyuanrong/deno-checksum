@@ -1,2 +1,2 @@
-export { sha1 } from "./sha1.ts";
-export { md5 } from "./md5.ts";
+export { encode } from "https://deno.land/x/std/strings/strings.ts";
+export { Hash } from "./hash.ts";
