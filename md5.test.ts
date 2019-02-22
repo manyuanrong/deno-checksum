@@ -1,4 +1,4 @@
-import { Hash } from "./hash.ts";
+import { Hash, hex } from "./hash.ts";
 import { encode } from "https://deno.land/x/std/strings/strings.ts";
 import { test, runTests, assert } from "https://deno.land/x/testing/mod.ts";
 
@@ -20,6 +20,12 @@ test(function test3() {
     const result = hash.digest(encode("我爱你"));
     assert.equal("4f2016c6b934d55bd7120e5d0e62cce3", result.hex());
     console.log(result.hex());
+});
+
+test(function test4() {
+    const result = hex(hash.digest(encode("hex")).data);
+    assert.equal("b8d1b43eae73587ba56baef574709ecb", result);
+    console.log(result);
 });
 
 runTests();
