@@ -1,4 +1,4 @@
-# deno-crypto
+# deno-checksum
 
 ```ts
 import { Hash, encode } from "https://raw.githubusercontent.com/manyuanrong/deno-checksum/master/mod.ts";
