@@ -1,2 +1,2 @@
-export { encode } from "https://deno.land/x/std/strings/strings.ts";
+export { encode } from "https://deno.land/std/strings/mod.ts";
 export { Hash, hex } from "./hash.ts";
