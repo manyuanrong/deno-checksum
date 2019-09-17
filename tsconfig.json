@@ -10,6 +10,7 @@
     "noLib": false,
     "pretty": true,
     "resolveJsonModule": true,
+    "strict": true,
     "plugins": [
       {
         "name": "deno_ls_plugin"

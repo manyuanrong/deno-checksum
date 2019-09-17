@@ -172,7 +172,7 @@ function binlMD5(x: number[], len: number): number[] {
 }
 
 function md5(bytes: Uint8Array): number[] {
-  let data = [];
+  let data: number[] = [];
   var length8 = bytes.length * 8;
   for (let i = 0; i < length8; i += 8) {
     data[i >> 5] |= (bytes[i / 8] & 0xff) << i % 32;

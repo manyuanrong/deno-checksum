@@ -8,7 +8,7 @@ function binb_sha1(x: number[], len: number): number[] {
   x[len >> 5] |= 0x80 << (24 - (len % 32));
   x[(((len + 64) >> 9) << 4) + 15] = len;
 
-  const w = [];
+  const w: number[] = [];
   let a = 1732584193;
   let b = -271733879;
   let c = -1732584194;
@@ -88,7 +88,7 @@ function bit_rol(num: number, cnt: number): number {
 
 export class Sha1Hash implements HashAlgorithm {
   digest(bytes: Uint8Array): Uint8Array {
-    let data = [];
+    let data: number[] = [];
     for (var i = 0; i < bytes.length * 8; i += 8) {
       data[i >> 5] |= (bytes[i / 8] & 0xff) << (24 - (i % 32));
     }
