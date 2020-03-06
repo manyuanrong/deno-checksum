@@ -1,8 +1,8 @@
-import { encode } from "https://deno.land/std/strings/encode.ts";
-import { assertEquals } from "https://deno.land/std/testing/asserts.ts";
-import { test } from "https://deno.land/std/testing/mod.ts";
+import { encode } from "https://deno.land/std@v0.35.0/strings/encode.ts";
+import { assertEquals } from "https://deno.land/std@v0.35.0/testing/asserts.ts";
 import { Hash, hex } from "./hash.ts";
 
+const { test } = Deno;
 const hash = new Hash("md5");
 
 test(function testMd5Num() {
