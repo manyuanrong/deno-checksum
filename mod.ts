@@ -1,2 +1,2 @@
-export { encode } from "https://deno.land/std/strings/mod.ts";
+export const encode = new TextEncoder().encode;
 export { Hash, hex } from "./hash.ts";
