@@ -1,5 +1,4 @@
-import { encode } from "https://deno.land/std@v0.35.0/strings/encode.ts";
-import { assertEquals } from "https://deno.land/std@v0.35.0/testing/asserts.ts";
+import { assertEquals, encode } from "./deps.ts";
 import { Hash, hex } from "./hash.ts";
 
 const { test } = Deno;
