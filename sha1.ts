@@ -27,7 +27,7 @@ function binb_sha1(x: number[], len: number): number[] {
       else w[j] = bit_rol(w[j - 3] ^ w[j - 8] ^ w[j - 14] ^ w[j - 16], 1);
       var t = safe_add(
         safe_add(bit_rol(a, 5), sha1_ft(j, b, c, d)),
-        safe_add(safe_add(e, w[j]), sha1_kt(j))
+        safe_add(safe_add(e, w[j]), sha1_kt(j)),
       );
       e = d;
       d = c;

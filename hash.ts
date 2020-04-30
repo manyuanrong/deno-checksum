@@ -19,13 +19,13 @@ export class Hash {
   constructor(readonly algorithm: AlgorithmName) {
     const algorithms = {
       sha1: Sha1Hash,
-      md5: Md5Hash
+      md5: Md5Hash,
     };
     this.instance = new algorithms[algorithm]();
   }
 
   digest(
-    bytes: Uint8Array
+    bytes: Uint8Array,
   ): {
     data: Uint8Array;
     hex(): string;
