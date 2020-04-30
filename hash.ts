@@ -13,6 +13,11 @@ export function hex(bytes: Uint8Array): string {
     .join("");
 }
 
+const encoder = new TextEncoder();
+export function encode(str: string) {
+  return encoder.encode(str);
+}
+
 export class Hash {
   readonly instance: HashAlgorithm;
 
@@ -35,5 +40,9 @@ export class Hash {
       data: bytes,
       hex: () => hex(bytes),
     };
+  }
+
+  digestString(string:string) {
+    return this.digest(encode(string));
   }
 }
