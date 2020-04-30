@@ -1,0 +1,24 @@
+name: ci
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    name: ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
+    strategy:
+      matrix:
+        os: [macOS-latest, windows-latest, ubuntu-latest]
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v1
+
+      - name: install deno
+        uses: denolib/setup-deno@master
+        with:
+          deno-version: 0.42.0
+
+      - name: run tests
+        run: deno test
