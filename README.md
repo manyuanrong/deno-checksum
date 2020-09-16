@@ -1,4 +1,6 @@
-# deno-checksum
+# deno-checksum 
+
+【Deprecated】Use [std/hash](https://deno.land/std/hash) instead
 
 [![tag](https://img.shields.io/github/tag/manyuanrong/deno-checksum.svg)](https://github.com/manyuanrong/deno-checksum)
 [![Build Status](https://github.com/manyuanrong/deno-checksum/workflows/ci/badge.svg?branch=master)](https://github.com/manyuanrong/deno-checksum/actions)
